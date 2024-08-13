@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            button {
+                background-color: blue;
+                border:0cap;
+                font-size: 30px;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='app'></div>
+    </body>
+    <script>
+        // podemos usar react, sin instalar nada
+        import React from "https://esm.sh/react@18.2.0";
+        import ReactDOM from "https://esm.sh/react-dom@18.2.0/client";
+        
+        const appDomElement = document.getElementById('app');
+
+        const root = ReactDOM.createRoot(appDomElement);
+        
+                                        //elemento, propiedades, lo que envuelve
+        const button = React.createElement('button', {"data-id": 123}, 'Me gusta 1');
+        const button2 = React.createElement('button', {"data-id": 456}, 'Me gusta 2');
+        const button3 = React.createElement('button', {"data-id": 789}, 'Me gusta 3');
+                                        // no necesitamos crear un mero DIV
+        const div = React.createElement(React.Fragment, null, [button, button2, button3]);
+
+        root.render(div);  
+        
+        /* Esto es lo mismo que la seccion de arriba, pero con JSX
+        <React.Fragment>
+            <button data-id='123'>Me gusta 1</button>
+            <button data-id='456'>Me gusta 2</button>    
+            <button data-id='789'>Me gusta 3</button>    
+        </React.Fragment>
+        */
+       // Al usaer {}, queremos que evalue lo que está dentro. 
+        // solo podemos renderizar un elemento
+        //root.render(button, button2, button3);
+        // esto no renderiza, porque evita que puedan inyectar codigo.
+        //root.render('<button>Me gusta</button>') 
+    </script>
+</html>
